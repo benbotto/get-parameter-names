@@ -161,5 +161,15 @@ describe('function tests', function () {
 
     expect(arg(f)).to.deep.equal(['a', 'b']);
   });
+
+  it('supports default parameters test1.', function() {
+    var f = "function(arg1=3, /*arg2,*/ arg3='duh') {}";
+    expect(arg(f)).to.deep.equal(['arg1', 'arg3']);
+  });
+
+  it('supports default parameters test2.', function() {
+    var f = "function test(arg1=3, /*arg2,*/ arg345='duh') {}";
+    expect(arg(f)).to.deep.equal(['arg1', 'arg345']);
+  });
 });
 
